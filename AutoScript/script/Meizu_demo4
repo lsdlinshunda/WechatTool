@@ -1,0 +1,10 @@
+TOUCH|{'x':975,'y':136,'type':'downAndUp',}
+WAIT|{'seconds':1.0,}
+TOUCH|{'x':691,'y':416,'type':'downAndUp',}
+WAIT|{'seconds':1.0,}
+TOUCH|{'x':243,'y':1436,'type':'downAndUp',}
+WAIT|{'seconds':1.0,}
+TYPE|{'message':'julu121',}
+TOUCH|{'x':580,'y':500,'type':'downAndUp',}
+WAIT|{'seconds':3.0,}
+HIS|{}
