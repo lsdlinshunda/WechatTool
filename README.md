@@ -1,6 +1,3 @@
-# WechatTool
-根据公众号ID自动批量获取推送阅读点赞量
-
 ## 一、依赖清单
 - jdk
 - android sdk
@@ -11,12 +8,12 @@
 - nodejs
 - anyproxy
 - php 7.1
-
 ## 二、环境搭建
 ### 1.MonkeyRunner环境搭建
 MoneyRunner是安卓自动测试工具，用来在真机上进行模拟操作。
 MonkeyRunner的环境搭建，需要安装以下工具：jdk、android sdk、python编译器。
 #### （1）jdk的安装与配置
+
 - jdk下载地址：http://www.oracle.com/technetwork/java/javase/downloads/index.html
 ，下载完成后，默认安装即可
 - 安装完成后，将jdk安装目录和安装目录中的jre\bin添加至环境变量中的Path变量
@@ -59,6 +56,7 @@ PHP用于搭建本地服务器
 - 运行命令：``` anyproxy -i ```；参数-i是解析HTTPS的意思
 #### (2)在手机上安装证书
 - 浏览器打开终端里显示的AnyProxy Gui Interface的地址，获取rootCA.crt。有两种获取方式，直接下载和扫二维码。之后在手机上安装rootCA.crt证书
+> - 注意证书类型选择的是VPN和应用，不是选wifi。之前使用安卓手机时证书类型选的是wifi，结果查询过程会一直弹安全警示。但是改成VPN和应用之后从推送页面点返回，历史消息页面不会再重新发起请求，而是取缓存的页面，导致会重复跳转同一条推送，所以现在改变了这种点返回的方式，改成点左上角的X返回之前的页面，再重新点击“查看历史消息”。这么做同时解决了加载过慢可能会退出应用的问题，自动查询的稳定性大大提升。
 #### (3)设置代理
 - 打开手机wifi的设置，代理设置为手动，服务器地址为AnyProxy终端里显示的地址，代理服务器端口默认为8001
 #### (4)查看抓取信息
