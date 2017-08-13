@@ -3,7 +3,8 @@ import sys
 import os
 from com.android.monkeyrunner import MonkeyRunner
 
-#deviceID = "621QECPP2APWG"  #设备ID
+#deviceID = "621QECPP2APWG"  #魅族
+#deviceID = "621QECPP2APWG"  #oppo
 resetButton = (96,139)      #手机左上角取消按钮坐标
 
 #用到的文件路径
@@ -34,6 +35,7 @@ def touchByImage(dev, srcPath, objPath, type):
     pos = eval(output.read())
     print pos
     dev.touch(pos[0],pos[1], type)
+    return pos
 
 #重复点击左上角的取消键回退到初始界面
 def reset(dev, n = 5):
@@ -55,7 +57,10 @@ def avoidSafeNotice(dev):
 
 #Process a single file for the specified device.  
 def process_file(fp, fid, device):
+    index = 1
     for accountID in fid:
+        print ("---------------"+str(index)+"--------------")
+        index = index + 1
         accountID = accountID.replace("\n","")
         accountID = accountID.replace("\r","")
         try:
@@ -81,6 +86,7 @@ def process_file(fp, fid, device):
                 CMD_MAP[cmd](device, rest)
                 MonkeyRunner.sleep(0.5)
                 device.press("KEYCODE_ENTER", "downAndUp")
+                #device.touch(996, 1849, "downAndUp")
                 MonkeyRunner.sleep(1.0)
                 avoidSafeNotice(device)
                 MonkeyRunner.sleep(1.5)
@@ -93,21 +99,21 @@ def process_file(fp, fid, device):
             if cmd == "HIS":       #点击查看历史消息按钮
                 savePath =  workPath + "\\AutoScript\\snapshot\\"+accountID+".png"
                 try:
-                    touchByImage(device, savePath, hisButtonPath, "downAndUp")
+                    pos = touchByImage(device, savePath, hisButtonPath, "downAndUp")
                 except:
                     print "[ERROR] NOT FIND HISTORY BUTTON"
                     reset(device)
                     break
-                MonkeyRunner.sleep(5.5)
+                MonkeyRunner.sleep(7)
                 urlcount = len(open(urlFile,'rU').readlines())     #读取url文件获取需要跳转的次数
-                while (urlcount>0):
-                    print (str(urlcount) + " article left")
-                    device.press("KEYCODE_BACK","downAndUp")
-                    MonkeyRunner.sleep(5.5)
-                    urlcount = urlcount - 1
                 print (str(urlcount) + " article left")
-                device.press("KEYCODE_BACK", "downAndUp")
-                MonkeyRunner.sleep(1.0)
+                while (urlcount>0):
+                    device.touch(resetButton[0], resetButton[1], "downAndUp")
+                    MonkeyRunner.sleep(0.5)
+                    device.touch(pos[0], pos[1], "downAndUp")
+                    MonkeyRunner.sleep(6)
+                    urlcount = urlcount - 1
+                    print (str(urlcount) + " article left")
                 continue
 
             if cmd not in CMD_MAP:  
@@ -123,7 +129,8 @@ def main():
     config  = eval(fconfig.read())
     fconfig.close()
     deviceID = config["deviceID"]
-    device = MonkeyRunner.waitForConnection(5, deviceID)
+    #device = MonkeyRunner.waitForConnection(5, deviceID)
+    device = MonkeyRunner.waitForConnection(5)
     config["max_url_num"] = int(MonkeyRunner.input(u"请输入每个公众号抓取的推送数：", str(config["max_url_num"])))
     fconfig = open(configPath, "w")
     fconfig.write(str(config))
