@@ -1,3 +1,7 @@
+# locate the history button
+# 2017.8.6 by linshunda
+# linshunda@baixing.com
+
 import sys
 import cv2
 import aircv as ac

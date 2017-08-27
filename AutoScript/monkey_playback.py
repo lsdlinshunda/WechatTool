@@ -1,4 +1,7 @@
 # -*- coding:UTF-8 -*-
+# linshunda@baixing.com
+# Updated on 2017.8.27
+
 import sys
 import os
 from com.android.monkeyrunner import MonkeyRunner
@@ -16,7 +19,7 @@ hisButtonPath = workPath + "\\AutoScript\\obj\\hisButton.png"              #截�
 noResultPath = workPath + "\\AutoScript\\obj\\noResult.png"                #用于比对的无搜索结果的截图
 judgeScript = workPath+"\\AutoScript\\judge.py"                            #图像定位脚本
 urlFile = workPath + "\\temp\\url.txt"                                     #历史推送页面抓取到的url
-accountInfoPath = workPath+"\\temp\\accountInfo.txt"                      #已查询公众号列表
+accountInfoPath = workPath+"\\temp\\accountInfo.txt"                       #已查询公众号列表
 
 CMD_MAP = {  
     "TOUCH": lambda dev, arg: dev.touch(**arg),  
@@ -85,8 +88,8 @@ def process_file(fp, fid, device):
                 rest = accountID
                 CMD_MAP[cmd](device, rest)
                 MonkeyRunner.sleep(0.5)
-                device.press("KEYCODE_ENTER", "downAndUp")
-                #device.touch(996, 1849, "downAndUp")
+                #device.press("KEYCODE_ENTER", "downAndUp")
+                device.touch(996, 1849, "downAndUp")
                 MonkeyRunner.sleep(1.0)
                 avoidSafeNotice(device)
                 MonkeyRunner.sleep(1.5)
@@ -128,7 +131,7 @@ def main():
     fconfig = open(configPath, "r")
     config  = eval(fconfig.read())
     fconfig.close()
-    deviceID = config["deviceID"]
+    #deviceID = config["deviceID"]
     #device = MonkeyRunner.waitForConnection(5, deviceID)
     device = MonkeyRunner.waitForConnection(5)
     config["max_url_num"] = int(MonkeyRunner.input(u"请输入每个公众号抓取的推送数：", str(config["max_url_num"])))
