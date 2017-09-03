@@ -1,6 +1,6 @@
 ## MonkeyRunner使用介绍
-1. Moneyrunner在使用前，必须先打开模拟器或连接上手机设备。
-2. 连接成功后， cmd输入```monkeyrunner```进入Monkeyrunner的shell命令交互模式。进入shell命令交互模式后，首要一件事就是导入monkeyrunner所要使用的模块。直接在shell命令下输入命令：```from com.android.monkeyrunner import MonkeyRunner,MonkeyDevice ```。这步完成后就可以利用Monkeyrunner进行测试工作了。
+1. MonkeyRunner在使用前，必须先打开模拟器或连接上手机设备。
+2. 连接成功后， cmd输入```monkeyrunner```进入MonkeyRunner的shell命令交互模式。进入shell命令交互模式后，首要一件事就是导入monkeyrunner所要使用的模块。直接在shell命令下输入命令：```from com.android.monkeyrunner import MonkeyRunner,MonkeyDevice ```。这步完成后就可以利用monkeyrunner进行测试工作了。
 3. MonkeyRunner也可以直接运行脚本，命令行格式为```monkeyrunner xxx.py```
 ***
 ### 常用API

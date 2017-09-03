@@ -10,7 +10,7 @@
 - php 7.1
 ## 二、环境搭建
 ### 1.MonkeyRunner环境搭建
-MoneyRunner是安卓自动测试工具，用来在真机上进行模拟操作。
+MonkeyRunner是安卓自动测试工具，用来在真机上进行模拟操作。
 MonkeyRunner的环境搭建，需要安装以下工具：jdk、android sdk、python编译器。
 #### （1）jdk的安装与配置
 
