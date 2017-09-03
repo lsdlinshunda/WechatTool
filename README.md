@@ -92,9 +92,7 @@ MonkeyRunner 需要手机连接到电脑上使用，也可以通过adb远程连�
 - 已经查询过的公众号之后再查询就会自动跳过，如果需要重新查询，清空``` temp\accountInfo.txt ```里的内容
 
 ## 参考资料
-- MonkeyRunner环境搭建 http://www.cnblogs.com/lynn-li/p/5885001.html
-
-- 【Python】通过截图匹配原图中的位置（opencv）
-http://blog.csdn.net/ns2250225/article/details/60334176
-- 【Python+OpenCV】Windows+Python3.6.0（Anaconda3）+OpenCV3.2.0安装配置 http://blog.csdn.net/lwplwf/article/details/61616493
-- 微信公众号文章批量采集系统的构建 https://zhuanlan.zhihu.com/p/24302048
+- [MonkeyRunner环境搭建]( http://www.cnblogs.com/lynn-li/p/5885001.html)
+- [【Python】通过截图匹配原图中的位置(opencv)](http://blog.csdn.net/ns2250225/article/details/60334176)
+- [【Python+OpenCV】Windows+Python3.6.0（Anaconda3）+OpenCV3.2.0安装配置](http://blog.csdn.net/lwplwf/article/details/61616493)
+- [微信公众号文章批量采集系统的构建](https://zhuanlan.zhihu.com/p/24302048)
